@@ -28,6 +28,7 @@ export default function Home() {
         </div>
         <nav className="space-x-4">
           <Link href="/team">Team</Link>
+          <Link href="/BirthdaySurprise">🎁 Smin</Link>
         </nav>
       </header>
 
@@ -55,6 +56,14 @@ export default function Home() {
           >
             iOS App herunterladen
           </a>
+
+          {/* 🎁 Smin Überraschung */}
+          <Link
+            href="/BirthdaySurprise"
+            className="bg-pink-500 hover:bg-pink-600 text-white px-5 py-3 rounded-xl shadow-md"
+          >
+            🎁 Geburtstags-Überraschung für Smin
+          </Link>
         </div>
       </section>
 
