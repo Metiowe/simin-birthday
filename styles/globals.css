@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@font-face {
+  font-family: "Negar";
+  src: url("/fonts/Negar.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src: url("/fonts/Aileron-Bold.otf") format("opentype");
+  font-display: swap;
+}
+
+body {
+  background: #fff;
+  color: #171717;
+  font-family: "Aileron", "negar"; /* ← default setzen */
+}
+
+:lang(fa) {
+  font-family: "Negar", "negar";
+}
