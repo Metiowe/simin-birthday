@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -7,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        aileron: ["Aileron", "sans-serif"],
         negar: ["Negar", "sans-serif"],
+        aileron: ["Aileron", "sans-serif"],
       },
     },
   },
