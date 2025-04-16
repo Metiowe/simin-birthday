@@ -1,5 +1,7 @@
+/* 📦 TailwindCSS Base Styles */
 @import "tailwindcss";
 
+/* 🎨 Farbschema Variablen */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,18 +14,21 @@
   }
 }
 
+/* 🔤 Custom Font: Negar für Farsi */
 @font-face {
   font-family: "Negar";
   src: url("/fonts/Negar.ttf") format("truetype");
   font-display: swap;
 }
 
+/* 🔤 Custom Font: Aileron für Deutsch/Englisch */
 @font-face {
   font-family: "Aileron";
   src: url("/fonts/Aileron-Bold.otf") format("opentype");
   font-display: swap;
 }
 
+/* 🌐 Grundlayout */
 html {
   font-family: "Aileron", "Negar", sans-serif;
   background-color: var(--background);
@@ -31,6 +36,7 @@ html {
   scroll-behavior: smooth;
 }
 
+/* 📄 Body Reset */
 body {
   margin: 0;
   padding: 0;
@@ -38,6 +44,8 @@ body {
   color: var(--foreground);
 }
 
+/* 🇮🇷 Farsi Spracheinstellung */
 :lang(fa) {
   font-family: "Negar", "Aileron", sans-serif;
+  direction: rtl;
 }
