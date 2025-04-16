@@ -40,6 +40,10 @@ const poems = [
     fa: "همیشه به داشتن دوستی مثل تو افتخار می‌کنم 🫂",
     de: "Ich bin dankbar für eine Freundin wie dich 🌟",
   },
+  {
+    fa: "بودن تو در کنارم، زیباترین اتفاق زندگی‌مه 💖",
+    de: "Deine Nähe ist das schönste Geschenk meines Lebens 💫",
+  },
 ];
 
 export default function BirthdaySurprise() {

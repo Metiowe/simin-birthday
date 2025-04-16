@@ -1,11 +1,12 @@
 // pages/team.tsx
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 /**
- * 👥 TeamPage – Übersicht über das Leichtesfahren-Team
- * Zeigt alle Teammitglieder mit Bild, Namen und Funktion
- * Fokus: Vertrauen & Transparenz gegenüber Nutzern
+ * 👥 TeamPage – animierte Version mit Vertrauen & Persönlichkeit
  */
 export default function TeamPage() {
   return (
@@ -18,75 +19,85 @@ export default function TeamPage() {
         />
       </Head>
 
-      {/* 🧭 Überschrift */}
-      <h1 className="text-4xl font-bold text-center mb-6">👥 Unser Team</h1>
+      {/* 🧭 Titel */}
+      <motion.h1
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl font-extrabold text-center mb-6 text-blue-700"
+      >
+        👥 Unser Team
+      </motion.h1>
 
-      {/* 🧠 Einführungstext */}
-      <p className="text-center max-w-2xl mx-auto text-lg text-gray-700 mb-12">
-        Hinter <strong>Leichtesfahren</strong> steckt ein engagiertes Team, das
-        dir hilft, deine Führerschein-Theorie effizient, modern und mit Spaß zu
-        meistern.
-      </p>
+      {/* ✍️ Intro */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="text-center max-w-2xl mx-auto text-lg text-gray-700 mb-12"
+      >
+        Hinter <strong>Leichtesfahren</strong> steht ein engagiertes Team, das
+        dir hilft, die Theorie modern, effizient und mit Freude zu lernen.
+      </motion.p>
 
-      {/* 👤 Teammitglieder */}
+      {/* 👤 Mitglieder */}
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-        {/* 🧑‍💻 Gründer */}
-        <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-          <Image
-            src="/logo6.png"
-            alt="Mahdi Bavi Nezhad"
-            width={100}
-            height={100}
-            className="rounded-full mx-auto mb-4 object-cover"
-          />
-          <h2 className="text-xl font-semibold leading-snug mb-2 break-words">
-            👨‍💻 Mahdi Bavi Nezhad
-          </h2>
-          <p className="text-gray-600 text-sm">
-            UX/UI Design & Gründer & Fullstack Entwickler
-          </p>
-        </div>
-
-        {/* ✍️ Content & UX */}
-        <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-          <Image
-            src="/logo6.png"
-            alt="Simin Maghsoudi"
-            width={100}
-            height={100}
-            className="rounded-full mx-auto mb-4 object-cover"
-          />
-          <h2 className="text-xl font-semibold leading-snug mb-2 break-words">
-            ✍️ Simin Maghsoudi
-          </h2>
-          <p className="text-gray-600 text-sm">
-            Mitentwicklung der Prüfungsfragen
-          </p>
-        </div>
-
-        {/* 🤖 Künstliche Intelligenz */}
-        <div className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition">
-          <Image
-            src="/logo6.png"
-            alt="AI Logiksystem"
-            width={100}
-            height={100}
-            className="rounded-full mx-auto mb-4 object-cover"
-          />
-          <h2 className="text-xl font-semibold leading-snug mb-2 break-words">
-            🤖 KI Logiksystem
-          </h2>
-          <p className="text-gray-600 text-sm">
-            Adaptive Analyse, Auswertung von Lernverhalten <br />& smarte
-            Optimierung deiner Vorbereitung.
-          </p>
-        </div>
+        {teamMembers.map((member, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.2, duration: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition-all"
+          >
+            <Image
+              src={member.image}
+              alt={member.name}
+              width={100}
+              height={100}
+              className="rounded-full mx-auto mb-4 object-cover"
+            />
+            <h2 className="text-xl font-semibold leading-snug mb-2 break-words">
+              {member.icon} {member.name}
+            </h2>
+            <p className="text-gray-600 text-sm whitespace-pre-line">
+              {member.role}
+            </p>
+          </motion.div>
+        ))}
       </div>
 
       {/* 📅 Footer */}
-      <p className="text-center mt-16 text-sm text-gray-500">
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="text-center mt-16 text-sm text-gray-500"
+      >
         Made with ❤️ by Leichtesfahren • {new Date().getFullYear()}
-      </p>
+      </motion.p>
     </div>
   );
 }
+
+const teamMembers = [
+  {
+    name: "Mahdi Bavi Nezhad",
+    role: "UX/UI Design\nGründer & Fullstack Entwickler",
+    image: "/logo6.png",
+    icon: "👨‍💻",
+  },
+  {
+    name: "Simin Maghsoudi",
+    role: "Content & Mitentwicklung der\nPrüfungsfragen",
+    image: "/logo6.png",
+    icon: "✍️",
+  },
+  {
+    name: "KI Logiksystem",
+    role: "Adaptive Analyse,\nLernverhalten & smarte\nOptimierung der Vorbereitung",
+    image: "/logo6.png",
+    icon: "🤖",
+  },
+];
